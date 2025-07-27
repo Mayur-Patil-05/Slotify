@@ -1,0 +1,2 @@
+# Slotify
+Event Management System
