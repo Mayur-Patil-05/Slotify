@@ -1,5 +1,6 @@
 package com.mayur.Slotify.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class Venue {
     private Boolean genderInclusiveRestrooms;
 
     @OneToMany(mappedBy = "venue", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Event> event;
 
     public Venue() {

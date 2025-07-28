@@ -1,6 +1,7 @@
 package com.mayur.Slotify.Dtos;
 
 import com.mayur.Slotify.Enum.EventCategory;
+import com.mayur.Slotify.Model.Venue;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,14 +15,14 @@ public class EventDto {
     private LocalDateTime endTime;
     private String organizer;
     private EventCategory category;
-    private Long venueId;
-    private List<Long> attendeeIds; // Simplified
+    private Venue venue;
+    private List<Long> attendeeIds;
     private List<Long> ticketIds;
 
     public EventDto() {
     }
 
-    public EventDto(Long eventId, String title, String description, String location, LocalDateTime startTime, LocalDateTime endTime, String organizer, EventCategory category, Long venueId, List<Long> attendeeIds, List<Long> ticketIds) {
+    public EventDto(Long eventId, String title, String description, String location, LocalDateTime startTime, LocalDateTime endTime, String organizer, EventCategory category, Venue venue, List<Long> attendeeIds, List<Long> ticketIds) {
         this.eventId = eventId;
         this.title = title;
         this.description = description;
@@ -30,7 +31,7 @@ public class EventDto {
         this.endTime = endTime;
         this.organizer = organizer;
         this.category = category;
-        this.venueId = venueId;
+        this.venue = venue;
         this.attendeeIds = attendeeIds;
         this.ticketIds = ticketIds;
     }
@@ -99,12 +100,12 @@ public class EventDto {
         this.category = category;
     }
 
-    public Long getVenueId() {
-        return venueId;
+    public Venue getVenue() {
+        return venue;
     }
 
-    public void setVenueId(Long venueId) {
-        this.venueId = venueId;
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 
     public List<Long> getAttendeeIds() {

@@ -1,5 +1,7 @@
 package com.mayur.Slotify.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mayur.Slotify.Enum.EventCategory;
 import jakarta.persistence.*;
 
@@ -21,6 +23,7 @@ public class Event {
 
     @ManyToOne
     @JoinColumn(name = "venue_id")
+    @JsonBackReference
     private Venue venue;
 
     @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
