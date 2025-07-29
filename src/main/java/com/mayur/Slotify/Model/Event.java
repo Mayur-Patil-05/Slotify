@@ -1,7 +1,6 @@
 package com.mayur.Slotify.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mayur.Slotify.Enum.EventCategory;
 import jakarta.persistence.*;
 
@@ -26,8 +25,6 @@ public class Event {
     @JsonBackReference
     private Venue venue;
 
-    @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
-    private List<Attendee> attendees;
 
     @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
     private List<Ticket> tickets;
@@ -35,7 +32,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(Long eventId, String title, String description, String location, LocalDateTime startTime, LocalDateTime endTime, String organizer, EventCategory category, Venue venue, List<Attendee> attendees, List<Ticket> tickets) {
+    public Event(Long eventId, String title, String description, String location, LocalDateTime startTime, LocalDateTime endTime, String organizer, EventCategory category, Venue venue, List<Ticket> tickets) {
         this.eventId = eventId;
         this.title = title;
         this.description = description;
@@ -45,7 +42,6 @@ public class Event {
         this.organizer = organizer;
         this.category = category;
         this.venue = venue;
-        this.attendees = attendees;
         this.tickets = tickets;
     }
 
@@ -119,14 +115,6 @@ public class Event {
 
     public void setVenue(Venue venue) {
         this.venue = venue;
-    }
-
-    public List<Attendee> getAttendees() {
-        return attendees;
-    }
-
-    public void setAttendees(List<Attendee> attendees) {
-        this.attendees = attendees;
     }
 
     public List<Ticket> getTickets() {

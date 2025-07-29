@@ -1,5 +1,6 @@
 package com.mayur.Slotify.Dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mayur.Slotify.Enum.EventCategory;
 import com.mayur.Slotify.Model.Venue;
 

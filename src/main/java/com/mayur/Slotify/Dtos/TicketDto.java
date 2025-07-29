@@ -2,6 +2,7 @@ package com.mayur.Slotify.Dtos;
 
 import com.mayur.Slotify.Enum.TicketStatus;
 import com.mayur.Slotify.Enum.TicketType;
+import com.mayur.Slotify.Model.Attendee;
 
 import java.time.LocalDate;
 
@@ -13,13 +14,13 @@ public class TicketDto {
     private String seatNumber;
     private LocalDate purchaseDate;
     private TicketStatus ticketStatus;
-    private Long attendeeId;
-    private Long eventId;
+    private AttendeeDto attendeeEmail;
+    private EventDto eventTitle;
 
     public TicketDto() {
     }
 
-    public TicketDto(Long ticketId, String ticketNumber, TicketType ticketType, Double price, String seatNumber, LocalDate purchaseDate, TicketStatus ticketStatus, Long attendeeId, Long eventId) {
+    public TicketDto(Long ticketId, String ticketNumber, TicketType ticketType, Double price, String seatNumber, LocalDate purchaseDate, TicketStatus ticketStatus, AttendeeDto attendeeEmail, EventDto eventTitle) {
         this.ticketId = ticketId;
         this.ticketNumber = ticketNumber;
         this.ticketType = ticketType;
@@ -27,8 +28,8 @@ public class TicketDto {
         this.seatNumber = seatNumber;
         this.purchaseDate = purchaseDate;
         this.ticketStatus = ticketStatus;
-        this.attendeeId = attendeeId;
-        this.eventId = eventId;
+        this.attendeeEmail = attendeeEmail;
+        this.eventTitle = eventTitle;
     }
 
     public Long getTicketId() {
@@ -87,19 +88,19 @@ public class TicketDto {
         this.ticketStatus = ticketStatus;
     }
 
-    public Long getAttendeeId() {
-        return attendeeId;
+    public AttendeeDto getAttendeeEmail() {
+        return attendeeEmail;
     }
 
-    public void setAttendeeId(Long attendeeId) {
-        this.attendeeId = attendeeId;
+    public void setAttendeeEmail(AttendeeDto attendeeEmail) {
+        this.attendeeEmail = attendeeEmail;
     }
 
-    public Long getEventId() {
-        return eventId;
+    public EventDto getEventTitle() {
+        return eventTitle;
     }
 
-    public void setEventId(Long eventId) {
-        this.eventId = eventId;
+    public void setEventTitle(EventDto eventTitle) {
+        this.eventTitle = eventTitle;
     }
 }

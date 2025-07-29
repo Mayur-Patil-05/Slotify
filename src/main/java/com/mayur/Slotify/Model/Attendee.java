@@ -16,24 +16,24 @@ public class Attendee {
     private String phone;
     private LocalDateTime registerAt;
 
-    @ManyToOne
-    @JoinColumn(name = "event_Id")
-    private Event event;
-
     @OneToMany(mappedBy = "attendee", fetch = FetchType.LAZY)
     private List<Ticket> tickets;
+
+    @PrePersist
+    protected void onCreate() {
+        this.registerAt = LocalDateTime.now();
+    }
 
     public Attendee() {
     }
 
-    public Attendee(Long attendeeId, String firstName, String lastName, String email, String phone, LocalDateTime registerAt, Event event, List<Ticket> tickets) {
+    public Attendee(Long attendeeId, String firstName, String lastName, String email, String phone, LocalDateTime registerAt, List<Ticket> tickets) {
         this.attendeeId = attendeeId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.registerAt = registerAt;
-        this.event = event;
         this.tickets = tickets;
     }
 
@@ -83,14 +83,6 @@ public class Attendee {
 
     public void setRegisterAt(LocalDateTime registerAt) {
         this.registerAt = registerAt;
-    }
-
-    public Event getEvent() {
-        return event;
-    }
-
-    public void setEvent(Event event) {
-        this.event = event;
     }
 
     public List<Ticket> getTickets() {
