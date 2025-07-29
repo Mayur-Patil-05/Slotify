@@ -5,10 +5,9 @@ import com.mayur.Slotify.Service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/tickets")
@@ -23,5 +22,21 @@ public class TicketController {
     @PostMapping
     public ResponseEntity<TicketDto> add(@RequestBody TicketDto ticketDto) {
         return new ResponseEntity<>(ticketService.createTicket(ticketDto), HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TicketDto>> getAll() {
+        return new ResponseEntity<>(ticketService.getAllTickets(), HttpStatus.OK);
+    }
+
+    @GetMapping("{ticketId}")
+    public ResponseEntity<TicketDto> getTicketById(@PathVariable Long ticketId) {
+        return new ResponseEntity<>(ticketService.getTicketById(ticketId), HttpStatus.OK);
+    }
+
+    @DeleteMapping("{ticketId}")
+    public ResponseEntity<Void> deleteTicket(@PathVariable Long ticketId) {
+        ticketService.deleteTicket(ticketId);
+        return ResponseEntity.noContent().build();
     }
 }
